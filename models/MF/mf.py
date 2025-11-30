@@ -47,6 +47,13 @@ class MF(nn.Module):
             b_i = self.b_i(b_items)
             pred += (b_u + b_i) 
             return pred
+
+    @classmethod
+    def from_config(cls, cfg):
+        return cls(num_users=cfg.get('num_users'),
+                   num_items=cfg.get('num_items'),
+                   latent_dim=cfg.get('latent_dim'),
+                   use_bias=cfg.get('use_bias'))
         
 
 class NeuralCF(MF):
@@ -87,6 +94,13 @@ class NeuralCF(MF):
 
         pred = self.mlp(concat)
         return pred
+    
+    @classmethod
+    def from_config(cls, cfg):
+        return cls(num_users=cfg.get('num_users'),
+                   num_items=cfg.get('num_items'),
+                   latent_dim=cfg.get('latent_dim'),
+                   use_bias=cfg.get('use_bias'))
     
 if __name__ == '__main__':
     model = MF(use_bias=True)
