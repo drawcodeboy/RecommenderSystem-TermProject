@@ -13,4 +13,5 @@ pip install matplotlib
 # If you use PyTorch
 conda create -n recom python=3.12
 conda activate recom
+pip install -r requirements.txt
 ```
