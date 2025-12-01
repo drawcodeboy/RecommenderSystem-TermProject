@@ -1,0 +1,28 @@
+title: Test MF
+
+device: &device cuda:0
+parallel: false
+
+task:
+  object: modelling
+
+data:
+  test:
+    name: book
+    mode: test
+    train_size: 0.75
+    data_path: data/BookRecommendation/Ratings.csv
+
+model:
+  name: MF
+  num_users: 105283 # dataset script로 확인
+  num_items: 340556 # dataset script로 확인
+  latent_dim: 200
+  use_bias: false
+
+hyperparameters:
+  batch_size: 512
+
+save:
+  weights_path: saved/weights
+  weights_filename: mf.book.epochs_100.pth

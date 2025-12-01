@@ -69,10 +69,9 @@ class NeuralCF(MF):
                          use_bias)
         
         self.mlp = nn.Sequential(
-            nn.Linear((2*latent_dim) if use_bias == False else (2*(latent_dim+1)), 2048),
+            nn.Linear((2*latent_dim) if use_bias == False else (2*(latent_dim+1)), 128),
             nn.ReLU(),
-            nn.Linear(2048, 256),
-            nn.Linear(256, 1)
+            nn.Linear(128, 1)
         )
 
     def forward(self, b_users, b_items):
