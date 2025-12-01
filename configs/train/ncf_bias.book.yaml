@@ -1,0 +1,33 @@
+title: Train NeuralCF + bias
+
+device: &device cuda:0
+parallel: false
+
+task:
+  object: modelling
+
+data:
+  train:
+    name: book
+    mode: train
+    train_size: 0.75
+    data_path: data/BookRecommendation/Ratings.csv
+
+model:
+  name: NeuralCF
+  num_users: 105283 # dataset script로 확인
+  num_items: 340556 # dataset script로 확인
+  latent_dim: 200
+  use_bias: true
+
+hyperparameters:
+  optim: Adam
+  lr: 0.0002
+  batch_size: 512
+  epochs: 100
+  weight_decay: 0.00005
+
+save:
+  name: ncf_bias.book
+  weights_path: saved/weights
+  loss_path: saved/loss
