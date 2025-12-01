@@ -30,7 +30,7 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, task_cfg, device):
         return sum(total_loss)/len(total_loss)
     
 @torch.no_grad()
-def evaluate(model, dataloader, loss_fn, task_cfg, device, K=20, threshold=7.0):
+def evaluate(model, dataloader, loss_fn, task_cfg, device, K=10, threshold=7.0):
     model.eval()
     
     precision_list = []
