@@ -1,20 +1,21 @@
-title: Train MF bias
+title: Train NeuralCF + bias (BPR)
 
 device: &device cuda:0
 parallel: false
 
 task:
-  object: modelling
+  object: BPR
 
 data:
   train:
-    name: book
+    name: book_bpr
     mode: train
     train_size: 0.75
     data_path: data/BookRecommendation/Ratings.csv
+    num_negatives: 1
 
 model:
-  name: MF
+  name: NeuralCF
   num_users: 105283 # dataset script로 확인
   num_items: 340556 # dataset script로 확인
   latent_dim: 200
@@ -26,9 +27,9 @@ hyperparameters:
   batch_size: 512
   epochs: 100
   weight_decay: 0.00005
-  loss_fn: RMSE
+  loss_fn: BPR
 
 save:
-  name: mf_bias.book
+  name: ncf_bias_bpr.book
   weights_path: saved/weights
   loss_path: saved/loss

@@ -18,12 +18,32 @@ def train_one_epoch(model, dataloader, loss_fn, optimizer, task_cfg, device):
             optimizer.step()
 
             total_loss.append(loss.item())
+
+        elif task_cfg['object'] == 'BPR':
+            optimizer.zero_grad()
+
+            user_id_idx, item_id_idx_i, item_id_idx_j = data
+            # Float로 타입 변환 일어나길래 다시 LongTensor로 변환했음 (왜 나지?)
+            # user_id_idx, item_id_idx_i, item_id_idx_j = user_id_idx.long().to(device), item_id_idx_i.long().to(device), item_id_idx_j.long().to(device)
+
+            r_ui = model(user_id_idx, item_id_idx_i)
+            r_uj = model(user_id_idx, item_id_idx_j)
+
+            loss = loss_fn(r_ui, r_uj)
+            loss.backward()
+            optimizer.step()
+
+            total_loss.append(loss.item())
+
         else:
             raise Exception("Check your task_cfg['object'] configuration")
          
         if task_cfg['object'] == 'modelling':
             print(f"\rTraining: {100*batch_idx/len(dataloader):.2f}%, "
                   f"RMSE: {sum(total_loss)/len(total_loss):.6f}", end="")
+        elif task_cfg['object'] == 'BPR':
+            print(f"\rTraining: {100*batch_idx/len(dataloader):.2f}%, "
+                  f"BPRLoss: {sum(total_loss)/len(total_loss):.6f}", end="")
     print()
     
     if task_cfg['object'] == 'modelling':

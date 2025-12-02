@@ -1,34 +1,28 @@
-title: Train MF bias
+title: Test Neural CF + bias (BPR)
 
 device: &device cuda:0
 parallel: false
 
 task:
-  object: modelling
+  object: modelling # 여긴 BPR object 말고 똑같이 가져가도 될 듯함
 
 data:
-  train:
-    name: book
-    mode: train
+  test:
+    name: book # 이것도
+    mode: test
     train_size: 0.75
     data_path: data/BookRecommendation/Ratings.csv
 
 model:
-  name: MF
+  name: NeuralCF
   num_users: 105283 # dataset script로 확인
   num_items: 340556 # dataset script로 확인
   latent_dim: 200
   use_bias: true
 
 hyperparameters:
-  optim: Adam
-  lr: 0.0002
   batch_size: 512
-  epochs: 100
-  weight_decay: 0.00005
-  loss_fn: RMSE
 
 save:
-  name: mf_bias.book
   weights_path: saved/weights
-  loss_path: saved/loss
+  weights_filename: ncf_bias_bpr.book.epochs_100.pth

@@ -26,6 +26,7 @@ hyperparameters:
   batch_size: 512
   epochs: 100
   weight_decay: 0.00005
+  loss_fn: RMSE
 
 save:
   name: mf.book

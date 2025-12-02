@@ -48,7 +48,13 @@ def main(cfg):
     # Loss function
     def RMSELoss(yhat,y):
         return torch.sqrt(torch.mean((yhat-y)**2))
-    loss_fn = RMSELoss
+    
+    def BPRLoss(r_ui, r_uj):
+        return -torch.log(torch.sigmoid(r_ui - r_uj)).mean()
+    
+    loss_fn = None
+    if hp_cfg['loss_fn'] == 'RMSE': loss_fn = RMSELoss
+    elif hp_cfg['loss_fn'] == 'BPR': loss_fn =  BPRLoss
     
     # Optimizer
     optimizer = getattr(torch.optim, hp_cfg['optim'])(model.parameters(), lr=hp_cfg['lr'], weight_decay=hp_cfg['weight_decay'])

@@ -54,7 +54,7 @@ def main(cfg):
     loss_fn = RMSELoss
     
     start_time = int(time.time())
-    result = evaluate(model, test_dl, loss_fn, task_cfg, device)
+    result = evaluate(model, test_dl, loss_fn, task_cfg, device, K=5, threshold=7)
     test_time = int(time.time() - start_time)
     print(f"Test Time: {test_time//60:02d}m {test_time%60:02d}s")
     
