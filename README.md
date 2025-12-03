@@ -55,7 +55,7 @@ python subtasks/03_recommender/exec.py # 277171, Best user case
       <img src="assets/slides/슬라이드4.PNG" width="1000"><br>
       <img src="assets/slides/슬라이드5.PNG" width="1000"><br>
       <img src="assets/slides/슬라이드6.PNG" width="1000"><br>
-      <img src="assets/slides/슬라이드7.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드7_.PNG" width="1000"><br>
       <img src="assets/slides/슬라이드8.PNG" width="1000"><br>
       <img src="assets/slides/슬라이드9.PNG" width="1000"><br>
     </td>
