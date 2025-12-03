@@ -1,6 +1,23 @@
 # AI추천시스템 TermProject
 * IT융합학부 20202086 권다운
 
+# Slides
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/slides/슬라이드1.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드2.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드3.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드4.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드5.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드6.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드7.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드8.PNG" width="1000"><br>
+      <img src="assets/slides/슬라이드9.PNG" width="1000"><br>
+    </td>
+  </tr>
+</table>
+
 # Environments
 ```
 # If you use Surprise,
